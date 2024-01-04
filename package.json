@@ -1,0 +1,22 @@
+{
+  "name": "wolt_technical_assignment",
+  "version": "1.0.0",
+  "description": "Wolt e2e tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pillika/wolt_technical_assignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pillika/wolt_technical_assignment/issues"
+  },
+  "homepage": "https://github.com/pillika/wolt_technical_assignment#readme",
+  "devDependencies": {
+    "cypress": "^13.6.2"
+  }
+}
