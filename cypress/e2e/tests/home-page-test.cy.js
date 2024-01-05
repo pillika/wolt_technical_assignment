@@ -14,6 +14,13 @@ describe("home-page-test", function () {
         cy.get('#front-page-input').type('{enter}');
         cy.url().should('eq', 'https://wolt.com/en/discovery');
         cy.get(`[data-test-id="header.address-select-button.address-text"]`).contains('Jonavos gatvė 7');
-
+        //need to improve selector
+        cy.get(':nth-child(2) > .sc-147d0703-0')
+        .click();
+        cy.get('h1').should('have.text', "Restaurants near me");
+        cy.contains('Burger').click();
+        cy.get('h1').should('have.text', "Burgers near me");
+        cy.get(`[data-test-id="VenueVerticalListGrid"]>a`);
     })
+    
 })
