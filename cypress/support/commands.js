@@ -14,7 +14,7 @@
 //
 //
 // -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
+// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => {  })
 //
 //
 // -- This is a dual command --
@@ -23,3 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('clickDataLocalizationKeyButton', (label) => {
+    cy.get(`[data-localization-key="${label}"]`).click()
+});
