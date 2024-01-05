@@ -9,11 +9,11 @@ describe("home-page-test", function () {
     })
     it("search for restaurant that delivers burgers to kauno dokas", function () {
         cy.clickDataLocalizationKeyButton("gdpr-consents.banner.accept-button");
-        cy.get(`[data-test-id="address-picker-input.input"]`)
-            .type("Kauno Dokas");
-        
+        cy.get('#front-page-input').type("Kauno Dokas");
         cy.get('#suggestions', { timeout: 10000 }).should('be.visible');
+        cy.get('#front-page-input').type('{enter}');
+        cy.url().should('eq', 'https://wolt.com/en/discovery');
+        cy.get(`[data-test-id="header.address-select-button.address-text"]`).contains('Jonavos gatvė 7');
 
-        cy.get(`[data-test-id="address-picker-input.input"]`).type('{enter}')
     })
 })
