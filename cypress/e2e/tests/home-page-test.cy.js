@@ -56,7 +56,14 @@ describe("home-page-test", function () {
             cy.get('[data-test-id="product-modal.submit"]').click();
             cy.get('[data-test-id="cart-view-button"] div:last-child > div > div:first-child').eq(0).should('have.text', '1');
             cy.get('[data-test-id="cart-view-button"] div:last-child > div > div:last-child').eq(0).should('have.text', price);
+            cy.contains('View order').click();
+            cy.contains('Your order').should('exist');
+            cy.get('[data-test-id="CartItemName"]').should('have.text', "420 Blaze Burger with CBD");
+            cy.get('[data-test-id="CartItemName"]').parent('div').find('div > span').eq(2).should('have.text', price);
+            cy.get('[data-test-id="CartItemStepperValue"]').should('have.text', '1')
         })
+       
+        
         
     })
 })
