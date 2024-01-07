@@ -49,7 +49,7 @@ describe("home-page-test", function () {
             .click();
         cy.contains('Burger').click();
         cy.get('[data-test-id="venueCard.sventas-dumas"]').click();
-        cy.contains('420 Blaze Burger with CBD').click();
+        cy.contains('420 Blaze Burger with CBD').click({force: true});
         let price;
         cy.get('[data-test-id="product-modal.total-price"]').invoke('text').then(text => {
             price = text;
@@ -61,6 +61,9 @@ describe("home-page-test", function () {
             cy.get('[data-test-id="CartItemName"]').should('have.text', "420 Blaze Burger with CBD");
             cy.get('[data-test-id="CartItemName"]').parent('div').find('div > span').eq(2).should('have.text', price);
             cy.get('[data-test-id="CartItemStepperValue"]').should('have.text', '1')
+            cy.get('[data-test-id="CartViewNextStepButton"]').should('be.visible');
+            cy.get('[data-test-id="CartViewItemCount"]').should('have.text', "1");
+            cy.contains('Go to checkout').find('span').eq(1).should('have.text', price);
         })
        
         
