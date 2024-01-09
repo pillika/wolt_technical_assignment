@@ -4,8 +4,8 @@ module.exports = defineConfig({
   e2e: {
     watchForFileChanges: false,
     env:{
-      email:"XXXXXXXXXXXXXXXXXXXXXXX",
-      password: "XXXXXXXXXXXXXXXXXXXXXX"
+      email:"xxxxxxxx",
+      password: "xxxxxxxxxx"
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
