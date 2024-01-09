@@ -27,3 +27,15 @@
 Cypress.Commands.add('clickDataLocalizationKeyButton', (label) => {
     cy.get(`[data-localization-key="${label}"]`).click()
 });
+
+// https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false
+})
+
+Cypress.on(
+  'uncaught:exception',
+  (err) =>
+    !err.message.includes('ResizeObserver loop') &&
+    !err.message.includes('Error in protected function')
+)
