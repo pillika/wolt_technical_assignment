@@ -17,29 +17,29 @@ clickRestaurantsButton(){
     this.elements.restaurantsButton().click({force:true});
 }
 clickAddressSelectButton() {
-    this.elements.addressSelectButton().click();
+    this.elements.addressSelectButton().click({force:true});
 }
 clickAddNewAddress() {
-    this.elements.addNewAddressButton().click();
+    this.elements.addNewAddressButton().click({force:true});
 }
 enterAddress(address){
     this.elements.addressInputField().focus().type(address, { force: true });
-    this.elements.addressSugestions().should('be.visible');
-    this.elements.addressInputField().type('{enter}');
+    this.elements.addressSugestions().should('be.visible', { force: true });
+    this.elements.addressInputField().type('{enter}', { force: true });
     this.elements.addressContinueButton().click();
 }
 
 setAddressType(){
-    this.elements.addressTypeButton().click();
+    this.elements.addressTypeButton().click({force:true});
 }
 typeAddressDetails() {
-    this.elements.addressDetailsInputField().type("Kauno Dokas, B entrance, Present Connection");
+    this.elements.addressDetailsInputField().type("Kauno Dokas, B entrance, Present Connection", { force: true });
 }
 selectDropOffOption() {
-this.elements.dropOffAtOfficeRadioButton().click({force: true});
+this.elements.dropOffAtOfficeRadioButton().click({force:true});
 }
 clickAddressDetailsSubmitButton() {
-    this.elements.addressDetailsSubmitButton().click();
+    this.elements.addressDetailsSubmitButton().click({force:true});
 }
 
 }
