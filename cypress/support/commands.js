@@ -23,10 +23,27 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('selectAuthenticationMethodByGoogle', () => {
+  cy.get('[data-test-id="MethodSelect.Google"]').click();
+})
 
-Cypress.Commands.add('clickDataLocalizationKeyButton', (label) => {
-    cy.get(`[data-localization-key="${label}"]`).click()
-});
+// // Followed this example: https://medium.com/@neeleshrauniyar/log-in-through-facebook-using-cypress-b3a6d9490cfc
+Cypress.Commands.add('authenticateWithGoogleAccount', () => {
+ cy.origin("https://accounts.google.com/o/oauth2/auth", ()=>{
+    cy.get('input[type="email"]').type(Cypress.env("email"), {force: true});
+    cy.get("#identifierNext").click();
+    Cypress.on(
+        'uncaught:exception',
+        (err) =>
+          !err.message.includes('ResizeObserver loop') &&
+          !err.message.includes('Error in protected function')
+      )
+    cy.wait(5000);
+    cy.get('input[type="password"]').type(Cypress.env("password"), {force: true});
+    cy.get("#passwordNext").click();
+  })
+})
+
 
 // https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
 Cypress.on('uncaught:exception', (err, runnable) => {
