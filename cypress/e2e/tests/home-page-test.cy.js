@@ -17,7 +17,7 @@ describe("home-page-test", function () {
     const restaurantName = 'sventas-dumas';
     const menuItemName = '420 Blaze Burger with CBD'
 
-    this.beforeEach(function () {
+    beforeEach(function () {
         cy.visit("https://wolt.com")
          homePage = new HomePage();
          discoveryPage = new DiscoveryPage();
@@ -26,12 +26,12 @@ describe("home-page-test", function () {
          restaurantMenuPage = new RestaurantMenuPage();
     })
 
-    xit("check if page title is correct", function () {
+    it("check if page title is correct", function () {
         const pageTitle = "Wolt Delivery: Food and more | Lithuania";
         cy.title().should('eq', pageTitle);
     })
 
-    xit("search for restaurant that delivers burgers to kauno dokas", function () {
+    it("search for restaurant that delivers burgers to kauno dokas", function () {
         homePage.cookiePolicyConsent('accept');
         homePage.enterDeliveryAddress(address);
 
@@ -58,7 +58,7 @@ describe("home-page-test", function () {
         foodCategoryPage.elements.restaurantsList().its('length').should('be.gt', 0);
     })
 
-    xit("select favorite burger and add it to chart", function () {
+    it("select favorite burger and add it to chart", function () {
         homePage.cookiePolicyConsent('accept');
         homePage.enterDeliveryAddress(address);
         discoveryPage.clickRestaurantsButton();
@@ -70,7 +70,7 @@ describe("home-page-test", function () {
         restaurantMenuPage.elements.viewOrderButton().should('exist');
     })
   
-    xit("check if the burger is added to the chart correctly", function () {
+    it("check if the burger is added to the chart correctly", function () {
         homePage.cookiePolicyConsent('accept');
         homePage.enterDeliveryAddress(address);
         discoveryPage.clickRestaurantsButton();
@@ -96,7 +96,7 @@ describe("home-page-test", function () {
         })      
     })
 
-    xit("when burger is added to cart, user can log in to proceed to checkout", function () {
+    it("when burger is added to cart, user can log in to proceed to checkout", function () {
         homePage.cookiePolicyConsent('accept');
         homePage.enterDeliveryAddress(address);
         discoveryPage.clickRestaurantsButton();
@@ -108,7 +108,8 @@ describe("home-page-test", function () {
         restaurantMenuPage.clickGoToCheckoutButton();
         cy.selectAuthenticationMethodByGoogle();
         cy.authenticateWithGoogleAccount();
-        restaurantMenuPage.elements.modalContinueYourOrder().should('exist');
+
+        cy.url().should('contain', '/checkout');
     })
         
     it("Registered user can log in, set  new delivery address, filter restaurants, add items to cart and proceed to checkout", function() {
