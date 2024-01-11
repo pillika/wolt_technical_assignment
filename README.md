@@ -7,7 +7,7 @@ Before running the tests, ensure you have the following installed:
 - [Node.js](https://nodejs.org/)
 - [Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress)
 - Code Editor (Optional)
-If you prefer using a code editor for development, it is recommended to use [Visual Studio Code] (https://code.visualstudio.com/).
+If you prefer using a code editor for development, it is recommended to use [Visual Studio Code](https://code.visualstudio.com/).
 
 ## Installation
 
