@@ -14,7 +14,8 @@ elements = {
     goToCheckoutButton: () => cy.get('[data-test-id="CartViewNextStepButton"]'),
     goToCheckoutButtonItemCount: () => cy.get('[data-test-id="CartViewItemCount"]'),
     goToCheckoutButtonTotalPrice: () =>cy.contains('Go to checkout').find('span').eq(1),
-    modalContinueYourOrder: () => cy.get('div[data-modal-content-container="true"]', {timeout:10000})
+    modalContinueYourOrder: () => cy.get('div[data-modal-content-container="true"]', {timeout:10000}),
+    itemCardTopRightCornerCount: () => cy.get('[data-test-id="horizontal-item-card-stepperValue"]', {timeout:10000}), 
 }
 clickMenuItem (itemName) {
     this.elements.menuItem(itemName).click({force:true});
@@ -23,10 +24,9 @@ addItemToOrderInModal(){
     this.elements.modalAddToOrderButton().click();
 }
 clickViewOrderButton() {
-    this.elements.viewOrderButton().click();
+    this.elements.viewOrderButton().should('be.visible', {timeout: 20000}).click();
 }
 clickGoToCheckoutButton(){
     this.elements.goToCheckoutButton().click();
 }
-
 }

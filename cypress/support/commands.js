@@ -44,7 +44,6 @@ Cypress.Commands.add('authenticateWithGoogleAccount', () => {
   })
 })
 
-
 // https://stackoverflow.com/questions/49384120/resizeobserver-loop-limit-exceeded
 Cypress.on('uncaught:exception', (err, runnable) => {
   return false

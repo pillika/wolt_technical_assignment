@@ -8,9 +8,9 @@ export class DiscoveryPage{
        addressInputField: () => cy.get('[data-test-id="AddressQueryInput"]'),
        addressSugestions: () => cy.get('#suggestions'),
        addressContinueButton: () =>  cy.get('[data-test-id="AddressPicker.ContinueButton"]'),
-       addressTypeButton: () =>cy.get('[data-test-id="ChooseAddressTypeButton.office"]'),
+       addressTypeButton: (addressType) => cy.get(`[data-test-id="ChooseAddressTypeButton.${addressType}"]`),
        addressDetailsInputField: () => cy.get('[data-test-id="edit-address-details-input.building_name"]'),
-       dropOffAtOfficeRadioButton: () =>cy.get('input[value="dropoff_at_office"]'),
+       dropOffRadioButton: (dropOffOption) =>cy.get(`input[value="dropoff_${dropOffOption}"]`),
        addressDetailsSubmitButton: () => cy.get('[data-test-id="edit-address-details-submit-button"]')
     } 
 clickRestaurantsButton(){
@@ -28,18 +28,16 @@ enterAddress(address){
     this.elements.addressInputField().type('{enter}', { force: true });
     this.elements.addressContinueButton().click();
 }
-
-setAddressType(){
-    this.elements.addressTypeButton().click({force:true});
+setAddressType(addressType){
+    this.elements.addressTypeButton(addressType).click({force:true});
 }
-typeAddressDetails() {
-    this.elements.addressDetailsInputField().type("Kauno Dokas, B entrance, Present Connection", { force: true });
+typeAddressDetails(addressDetails) {
+    this.elements.addressDetailsInputField().type(addressDetails, { force: true });
 }
-selectDropOffOption() {
-this.elements.dropOffAtOfficeRadioButton().click({force:true});
+selectDropOffOption(dropOffOption) {
+this.elements.dropOffRadioButton(dropOffOption).click({force:true});
 }
 clickAddressDetailsSubmitButton() {
     this.elements.addressDetailsSubmitButton().click({force:true});
 }
-
 }
